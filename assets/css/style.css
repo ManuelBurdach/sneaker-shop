@@ -120,6 +120,7 @@ h6 {
 .blackBtn:hover {
   background-color: #fff;
   color: #000;
+  transition: all 0.5s ease-out;
 }
 
 .whiteBtn {
@@ -130,6 +131,7 @@ h6 {
 .whiteBtn:hover {
   background-color: #000;
   color: #fff;
+  transition: all 0.5s ease-out;
 }
 
 nav {
@@ -180,6 +182,9 @@ main #newArrivalsContent {
 }
 main #newArrivalsContent article {
   margin: 25px;
+}
+main #newArrivalsContent article:hover {
+  opacity: 0.9;
 }
 main #newArrivalsContent article div:last-child {
   display: flex;
@@ -439,5 +444,27 @@ footer #joinThanks {
 @keyframes logoAni {
   50% {
     transform: translate(20px);
+  }
+}
+.opacity {
+  -webkit-animation: opacity 1s ease 1;
+          animation: opacity 1s ease 1;
+}
+
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }/*# sourceMappingURL=style.css.map */

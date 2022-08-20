@@ -98,6 +98,11 @@ let newArrivals = document.querySelector("#newArrivalsContent");
 let shoppingCart = [];
 
 let arrivals = (value = "None") => {
+  // newArrivals.style.animation = "opacity 1s 1";
+  newArrivals.classList.add("opacity");
+  setTimeout(() => {
+    newArrivals.classList.remove("opacity");
+  }, 1000);
   newArrivals.innerHTML = "";
   data.forEach((item) => {
     if (value == item.brand || value == "None") {
