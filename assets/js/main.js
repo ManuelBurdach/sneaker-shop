@@ -95,6 +95,7 @@ document.querySelector("#logo").addEventListener("mouseover", (event) => {
 
 // NEW ARRIVALS ---------------------------------
 let newArrivals = document.querySelector("#newArrivalsContent");
+let shoppingCart = [];
 
 data.forEach((item) => {
   let article = document.createElement("article");
@@ -111,6 +112,8 @@ data.forEach((item) => {
   button.innerText = "+";
   button.addEventListener("click", () => {
     document.querySelector("#shoppingCartCounter p").innerText = Number(document.querySelector("#shoppingCartCounter p").innerText) + 1;
+    shoppingCart.push(item);
+    console.log(shoppingCart);
   });
   div1.appendChild(button);
 
@@ -177,4 +180,28 @@ document.querySelectorAll("#cookieOverlay button").forEach((item) => {
       cookieAccept(true);
     }
   });
+});
+
+// SHOPPING CART ---------------------------------
+let shoppingCartOverlay = document.querySelector("#shoppingCartOverlay");
+let shoppingCartOverlayContent = document.querySelector("#shoppingCartOverlayContent");
+
+shoppingCartOverlay.style.display = "none";
+document.querySelector("#shoppingCart").addEventListener("click", () => {
+  if (shoppingCartOverlay.style.display == "none") {
+    shoppingCartOverlay.style.display = "block";
+    if (shoppingCart.length > 1) {
+      shoppingCart.forEach((item) => {
+        let div = document.createElement("div");
+        div.innerText = item.name;
+        shoppingCartOverlayContent.appendChild(div);
+      });
+    } else if (shoppingCart.length == 1) {
+      let div = document.createElement("div");
+      div.innerText = shoppingCart[0].name;
+      shoppingCartOverlayContent.appendChild(div);
+    }
+  } else {
+    shoppingCartOverlay.style.display = "none";
+  }
 });

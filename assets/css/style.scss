@@ -191,7 +191,19 @@ main {
       margin: 25px;
       & div:last-child {
         display: flex;
+        justify-content: flex-start;
         flex-wrap: wrap;
+        height: 24px;
+        margin-top: 10px;
+        & p {
+          cursor: pointer;
+          margin-right: 5px;
+          text-decoration: underline;
+          color: $grey;
+          &:hover {
+            color: $darkGrey;
+          }
+        }
       }
       & div {
         display: flex;
@@ -372,6 +384,25 @@ footer {
       text-align: center;
       line-height: 40px;
     }
+  }
+}
+
+#shoppingCartOverlay {
+  display: none;
+  position: fixed;
+  top: 25%;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background-color: $yellow;
+  text-align: center;
+  & #shoppingCartOverlayContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: red;
+    padding: 100px;
   }
 }
 

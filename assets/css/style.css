@@ -176,7 +176,19 @@ main #newArrivalsContent article {
 }
 main #newArrivalsContent article div:last-child {
   display: flex;
+  justify-content: flex-start;
   flex-wrap: wrap;
+  height: 24px;
+  margin-top: 10px;
+}
+main #newArrivalsContent article div:last-child p {
+  cursor: pointer;
+  margin-right: 5px;
+  text-decoration: underline;
+  color: #7c7c7c;
+}
+main #newArrivalsContent article div:last-child p:hover {
+  color: #191818;
 }
 main #newArrivalsContent article div {
   display: flex;
@@ -350,6 +362,25 @@ footer #joinThanks {
 #shoppingCart #shoppingCartCounter p {
   text-align: center;
   line-height: 40px;
+}
+
+#shoppingCartOverlay {
+  display: none;
+  position: fixed;
+  top: 25%;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background-color: #fbeda3;
+  text-align: center;
+}
+#shoppingCartOverlay #shoppingCartOverlayContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  color: red;
+  padding: 100px;
 }
 
 #cookieOverlay {
