@@ -135,7 +135,7 @@ data.forEach((item) => {
     }
   });
   let button1Img = document.createElement("img");
-  button1Img.src = "../assets/img/arrow.svg";
+  button1Img.src = "assets/img/arrow.svg";
   button1.appendChild(button1Img);
   div2.appendChild(price);
   div2.appendChild(button1);
