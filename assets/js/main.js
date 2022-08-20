@@ -87,10 +87,10 @@ const data = [
 
 // LOGO ANI ---------------------------------
 document.querySelector("#logo").addEventListener("mouseover", (event) => {
-  event.target.style.animation = "logoAni 1s 1";
-  event.target.addEventListener("mouseout", () => {
-    event.target.style.animation = "none";
-  });
+  event.target.classList.add("logoAni");
+  timeout = setTimeout(() => {
+    event.target.classList.remove("logoAni");
+  }, 1000);
 });
 
 // NEW ARRIVALS ---------------------------------
@@ -180,7 +180,8 @@ document.querySelector("#join input[type='submit']").addEventListener("click", (
     document.querySelector("#join").style.display = "none";
     document.querySelector("#joinThanks").style.display = "block";
   } else {
-    document.querySelector("#join input[type='email']").style.color = "red";
+    // document.querySelector("#join form").style.backgroundColor = "red";
+    document.querySelector("#join input[type='email']").style.backgroundColor = "rgb(233, 104, 104)";
   }
 });
 
@@ -210,13 +211,13 @@ document.querySelectorAll("#cookieOverlay button").forEach((item) => {
 let shoppingCartOverlay = document.querySelector("#shoppingCartOverlay");
 let shoppingCartOverlayContent = document.querySelector("#shoppingCartOverlayContent");
 let totalCost = shoppingCartOverlay.querySelector("#totalCost span");
-totalCost.innerHTML = 0;
 
 shoppingCartOverlay.style.display = "none";
 document.querySelector("#shoppingCart").addEventListener("click", () => {
   if (shoppingCartOverlay.style.display == "none") {
     shoppingCartOverlay.style.display = "block";
     shoppingCartOverlayContent.innerText = "";
+    totalCost.innerHTML = 0;
     if (shoppingCart.length > 1) {
       shoppingCart.forEach((item, index) => {
         let div = document.createElement("div");
@@ -230,8 +231,10 @@ document.querySelector("#shoppingCart").addEventListener("click", () => {
       let div = document.createElement("div");
       let p = document.createElement("p");
       p.innerText = shoppingCart[0].name;
+      p.innerText = `${1}. ${shoppingCart[0].name} ${shoppingCart[0].price}`;
       div.appendChild(p);
       shoppingCartOverlayContent.appendChild(div);
+      totalCost.innerHTML = Number(totalCost.innerText) + Number(shoppingCart[0].price.replace(".00 $", ""));
     } else {
       let div = document.createElement("div");
       let p = document.createElement("p");
