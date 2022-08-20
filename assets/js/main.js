@@ -85,11 +85,69 @@ const data = [
   },
 ];
 
-// COOKIE OVERLAY ---------------------------------
-// COOKIE OVERLAY ---------------------------------
-// COOKIE OVERLAY ---------------------------------
-// COOKIE OVERLAY ---------------------------------
-// COOKIE OVERLAY ---------------------------------
+// NEW ARRIVALS ---------------------------------
+let newArrivals = document.querySelector("#newArrivalsContent");
+
+data.forEach((item) => {
+  let article = document.createElement("article");
+
+  let img = document.createElement("img");
+  img.src = item.img;
+  article.appendChild(img);
+
+  let div1 = document.createElement("div");
+  let h6 = document.createElement("h6");
+  h6.innerText = item.name;
+  div1.appendChild(h6);
+  let button = document.createElement("button");
+  button.innerText = "+";
+  button.addEventListener("click", () => {
+    document.querySelector("#shoppingCartCounter p").innerText = Number(document.querySelector("#shoppingCartCounter p").innerText) + 1;
+  });
+  div1.appendChild(button);
+
+  let div2 = document.createElement("div");
+  let price = document.createElement("p");
+  price.innerText = item.price;
+
+  let div3 = document.createElement("div");
+  let button1 = document.createElement("button");
+  button1.value = false;
+  button1.addEventListener("click", () => {
+    if (button1.value === "false") {
+      button1.value = "true";
+      item.sizes.forEach((item) => {
+        let p = document.createElement("p");
+        p.innerText = item;
+        div3.appendChild(p);
+      });
+    } else {
+      button1.value = "false";
+      div3.innerHTML = "";
+    }
+  });
+  let button1Img = document.createElement("img");
+  button1Img.src = "../assets/img/arrow.svg";
+  button1.appendChild(button1Img);
+  div2.appendChild(price);
+  div2.appendChild(button1);
+
+  article.appendChild(div1);
+  article.appendChild(div2);
+  article.appendChild(div3);
+  newArrivals.appendChild(article);
+});
+
+// JOIN NEWSLETTER ---------------------------------
+document.querySelector("#join input[type='submit']").addEventListener("click", (event) => {
+  event.preventDefault();
+  if (document.querySelector("#join input[type='email']").value != "" && document.querySelector("#join input[type='email']").value.includes("@") && document.querySelector("#join input[type='email']").value.includes(".")) {
+    document.querySelector("#join").style.display = "none";
+    document.querySelector("#joinThanks").style.display = "block";
+  } else {
+    document.querySelector("#join input[type='email']").style.color = "red";
+  }
+});
 
 // COOKIE OVERLAY ---------------------------------
 let cookieAccept = (check = false) => {
