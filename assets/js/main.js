@@ -85,6 +85,14 @@ const data = [
   },
 ];
 
+// LOGO ANI ---------------------------------
+document.querySelector("#logo").addEventListener("mouseover", (event) => {
+  event.target.style.animation = "logoAni 1s 1";
+  event.target.addEventListener("mouseout", () => {
+    event.target.style.animation = "none";
+  });
+});
+
 // NEW ARRIVALS ---------------------------------
 let newArrivals = document.querySelector("#newArrivalsContent");
 

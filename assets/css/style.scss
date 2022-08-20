@@ -155,6 +155,9 @@ nav {
     font-weight: 500;
     font-size: 22px;
     color: $navLinks;
+    &:hover {
+      color: $grey;
+    }
   }
 }
 
@@ -288,10 +291,13 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  & div:nth-of-type(2) div:not(div:nth-of-type(2) div:last-child) {
+  & div:nth-of-type(2) div {
     margin: 0 100px 0 0;
     & a {
       margin: 10px 0;
+      &:hover {
+        color: $white;
+      }
     }
   }
   & div:nth-of-type(1) {
@@ -299,7 +305,8 @@ footer {
     margin-bottom: 20px;
     & div ul {
       display: flex;
-      & li {
+      list-style: none;
+      & a {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -309,6 +316,9 @@ footer {
         height: 50px;
         margin: 5px;
         border-radius: 15px;
+        &:hover {
+          background-color: $yellow;
+        }
       }
     }
   }
@@ -386,5 +396,16 @@ footer {
     height: 100vh;
     background-color: $yellow;
     opacity: 0.8;
+  }
+}
+
+// ANIMATION ----------------------------------
+
+@keyframes logoAni {
+  0%,
+  100% {
+  }
+  50% {
+    transform: translate(20px);
   }
 }
