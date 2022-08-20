@@ -7,7 +7,101 @@
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
-  <body>
+  <body onload="cookieAccept()">
+    <nav>
+      <div>
+        <a onclick="location.reload()" style="cursor: pointer"><img src="assets/img/logo.svg" alt="Logo" /></a>
+      </div>
+      <div>
+        <a href="#">CATALOGUE</a>
+        <a href="#">FASHION</a>
+        <a href="#">FAVOURITE</a>
+        <a href="#">LIFESTYLE</a>
+        <button type="button" class="blackBtn">SIGN UP</button>
+      </div>
+    </nav>
+    <header>
+      <h1><span>LET’S</span><br />EXPLORE<br /><span>UNIQUE</span><br />SHOES.</h1>
+      <p>Live for Influential and Innovative fashion!</p>
+      <button type="button" class="blackBtn">Shop now</button>
+    </header>
+    <main>
+      <section id="newArrivals">
+        <h2>NEW ARRIVALS</h2>
+        <div id="newArrivalsContent"></div>
+      </section>
+      <section id="DownloadApp">
+        <div>
+          <h2>DOWNLOAD APP & GET THE VOUCHER!</h2>
+          <p>Get 30% off for first transaction using Rondovision mobile app for now.</p>
+          <img src="assets/img/app-store.png" alt="DownloadAppStore" />
+          <img src="assets/img/google-play.png" alt="DownloadGooglePlay" />
+        </div>
+        <div>
+          <img src="assets/img/app.png" alt="App" />
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div id="join">
+        <div>
+          <h3>JOIN SHOPPING COMMUNITY TO GET MONTHLY PROMO</h3>
+          <p>Type your email down below and be young wild generation</p>
+          <form>
+            <input type="text" placeholder="Add your email here" />
+            <input type="submit" value="SEND" class="blackBtn" />
+          </form>
+        </div>
+      </div>
+      <div id="joinThanks">
+        <h3>THANK YOU!</h3>
+        <p>You will get our response shortly.</p>
+      </div>
+      <div id="footer">
+        <div>
+          <h4>FASHION</h4>
+          <p>Complete your style with awesome clothes from us.</p>
+          <div></div>
+        </div>
+        <div>
+          <div>
+            <h5>Company</h5>
+            <a href="#">About</a>
+            <a href="#">Contact us</a>
+            <a href="#">Support</a>
+            <a href="#">Careers</a>
+          </div>
+          <div>
+            <h5>Quick Link</h5>
+            <a href="#">Share Location</a>
+            <a href="#">Orders Tracking</a>
+            <a href="#">Size Guide</a>
+            <a href="#">FAQs</a>
+          </div>
+          <div>
+            <h5>Legal</h5>
+            <a href="#">Terms & conditions</a>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div id="shoppingCart">
+      <div id="shoppingCartCounter">
+        <p>0</p>
+      </div>
+      <img src="assets/img/shopping-cart.svg" alt="shoppingTrolley" />
+    </div>
+    <div id="cookieOverlay">
+      <div>
+        <h2>WE USE COOKIES</h2>
+        <div>
+          <button type="button" value="true" class="blackBtn">Accept</button>
+          <button type="button" value="false" class="whiteBtn">Reject all</button>
+        </div>
+      </div>
+      <div></div>
+    </div>
     <script src="assets/js/main.js"></script>
   </body>
 </html>

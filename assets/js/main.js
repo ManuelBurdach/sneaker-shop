@@ -84,3 +84,31 @@ const data = [
     sizes: ["41", "42", "43", "44"],
   },
 ];
+
+// COOKIE OVERLAY ---------------------------------
+// COOKIE OVERLAY ---------------------------------
+// COOKIE OVERLAY ---------------------------------
+// COOKIE OVERLAY ---------------------------------
+// COOKIE OVERLAY ---------------------------------
+
+// COOKIE OVERLAY ---------------------------------
+let cookieAccept = (check = false) => {
+  if (document.cookie.replace("cookieAccept=", "") === "true" || check === true) {
+    document.querySelector("#cookieOverlay").style.display = "none";
+    document.querySelector("nav").style.filter = "blur(0px)";
+    document.querySelector("header").style.filter = "blur(0px)";
+    document.querySelector("main").style.filter = "blur(0px)";
+    document.querySelector("footer").style.filter = "blur(0px)";
+  }
+};
+
+document.querySelectorAll("#cookieOverlay button").forEach((item) => {
+  item.addEventListener("click", (event) => {
+    if (event.target.value === "true") {
+      document.cookie = "cookieAccept=true; max-age=100000000; path=/";
+      location.reload();
+    } else if (event.target.value === "false") {
+      cookieAccept(true);
+    }
+  });
+});

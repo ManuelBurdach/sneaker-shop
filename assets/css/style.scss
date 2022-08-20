@@ -1,0 +1,321 @@
+// ALLGEMEIN ----------------------------------
+@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;700;900&family=Roboto&display=swap");
+// font-family: "Poppins", sans-serif;
+// font-weight: 500;
+// font-family: "Roboto", sans-serif;
+// font-weight: 400;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  padding: 0 50px;
+}
+
+nav,
+header,
+main,
+footer {
+  filter: blur(5px);
+}
+
+// H1 - H5 + ... ----------------------------------
+h1 {
+  font-size: 96px;
+  font-weight: 900;
+  line-height: 120px;
+  padding-left: 20px;
+}
+
+h1 span:nth-of-type(1) {
+  background-image: url("../img/background-main-headline-white.svg");
+  background-repeat: no-repeat;
+  margin-left: -20px;
+  padding: 0 100px 0 20px;
+}
+
+h1 span:nth-of-type(2) {
+  background-image: url("../img/background-main-headline-yellow.svg");
+  background-repeat: no-repeat;
+  margin-left: -20px;
+  padding: 0 100px 0 20px;
+}
+
+h1 + p {
+  font-weight: 400;
+  font-size: 32px;
+  color: $darkGrey;
+}
+
+h2 {
+  font-weight: 900;
+  font-size: 48px;
+}
+
+h2 + p {
+  font-weight: 500;
+  font-size: 24px;
+  color: $grey;
+}
+
+h3 {
+  font-weight: 900;
+  font-size: 55px;
+  color: $white;
+}
+
+h3 + p {
+  font-weight: 400;
+  font-size: 32px;
+  color: $white1;
+}
+
+h4 {
+  font-weight: 900;
+  font-size: 40px;
+  color: $white;
+}
+
+h4 + p {
+  font-weight: 400;
+  font-size: 24px;
+  color: $greyH4;
+}
+
+h5 {
+  color: $greyH5;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+h5 ~ a {
+  display: block;
+  text-decoration: none;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 24px;
+  color: $greyH4;
+}
+
+// CLASSEN ----------------------------------------
+
+.blackBtn,
+.whiteBtn {
+  font-weight: 500;
+  font-size: 24px;
+  border-radius: 10px;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.blackBtn {
+  background-color: $black;
+  color: $white;
+}
+
+.blackBtn:hover {
+  background-color: $white;
+  color: $black;
+}
+
+.whiteBtn {
+  background-color: $white;
+  color: $black;
+}
+
+.whiteBtn:hover {
+  background-color: $black;
+  color: $white;
+}
+
+// NAV ----------------------------------------
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 0 10px;
+  & a {
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: 500;
+    font-size: 22px;
+    color: $navLinks;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  nav {
+    display: block;
+  }
+}
+// HEADER -------------------------------------
+
+header {
+  background-image: url("../img/header-image.png");
+  background-size: 1900px;
+  background-repeat: no-repeat;
+  padding: 100px;
+  margin: 20px 0;
+  border-radius: 50px;
+  & button {
+    margin: 25px 0;
+  }
+}
+
+// MAIN ---------------------------------------
+
+main {
+  & section {
+    margin: 100px 0;
+  }
+  & section:nth-of-type(2) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    & div {
+      width: 500px;
+      & img {
+        margin: 30px 20px 0 0;
+        cursor: pointer;
+      }
+    }
+    & img {
+      max-width: 500px;
+    }
+  }
+}
+
+// FOOTER -------------------------------------
+
+footer {
+  margin: -50px;
+  & #join,
+  #joinThanks {
+    background-color: $darkYellow;
+    text-align: center;
+    padding: 100px;
+    & div {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+  }
+  & #join form {
+    display: flex;
+    justify-content: space-between;
+    background-color: $white;
+    border-radius: 5px;
+    padding: 5px;
+    width: 400px;
+    margin: 20px auto 0;
+    & input[type="text"] {
+      border: none;
+      margin-left: 10px;
+      width: 260px;
+      color: $greyJoin;
+      font-weight: 400;
+      font-size: 24px;
+    }
+  }
+  & #joinThanks {
+    display: none;
+  }
+}
+
+#footer {
+  background-color: $black;
+  padding: 100px 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  & div {
+    margin: 0 100px 0 0;
+    & a {
+      margin: 10px 0;
+    }
+  }
+  & div:nth-of-type(1) {
+    max-width: 500px;
+    margin-bottom: 20px;
+  }
+  & div:nth-of-type(2):not(div:nth-of-type(2) div) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  #footer {
+    justify-content: space-around;
+    & div:nth-of-type(1):not(div:nth-of-type(2) div) {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+  }
+}
+
+// SHOPPING CART -------------------------------
+
+#shoppingCart {
+  cursor: pointer;
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  display: inline-block;
+  background-color: $yellow;
+  padding: 20px 15px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & img {
+    width: 70%;
+  }
+  & #shoppingCartCounter {
+    position: absolute;
+    left: -15px;
+    top: -10px;
+    background-color: $darkYellow;
+    font-weight: 500;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    & p {
+      text-align: center;
+      line-height: 40px;
+    }
+  }
+}
+
+// COOKIE OVERLAY ----------------------------------
+
+#cookieOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  & div:nth-of-type(1) {
+    background-color: $yellow;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    & button {
+      margin-left: 20px;
+    }
+  }
+  & div:nth-of-type(2) {
+    height: 100vh;
+    background-color: $yellow;
+    opacity: 0.8;
+  }
+}
