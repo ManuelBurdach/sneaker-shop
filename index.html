@@ -27,7 +27,24 @@
     </header>
     <main>
       <section id="newArrivals">
-        <h2>NEW ARRIVALS</h2>
+        <div>
+          <h2>NEW ARRIVALS</h2>
+          <form>
+            <label for="select">Filter</label>
+            <select name="select" id="select">
+              <option value="None">None</option>
+              <option value="Nike">Nike</option>
+              <option value="Adidas">Adidas</option>
+              <option value="Vans">Vans</option>
+              <option value="Crocs">Crocs</option>
+              <option value="Reebok">Reebok</option>
+              <option value="New Balance">New Balance</option>
+              <option value="Errant">Errant</option>
+              <option value="Asics">Asics</option>
+            </select>
+          </form>
+        </div>
+
         <div id="newArrivalsContent"></div>
       </section>
       <section id="DownloadApp">
@@ -118,8 +135,14 @@
       <div></div>
     </div>
     <div id="shoppingCartOverlay">
-      <h2>SHOPPING CART</h2>
+      <div>
+        <h2>SHOPPING CART</h2>
+        <button type="button">X</button>
+      </div>
       <div id="shoppingCartOverlayContent"></div>
+      <div>
+        <p id="totalCost">Total cost: <span></span>$</p>
+      </div>
     </div>
     <script src="assets/js/main.js"></script>
   </body>

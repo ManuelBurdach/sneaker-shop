@@ -97,56 +97,68 @@ document.querySelector("#logo").addEventListener("mouseover", (event) => {
 let newArrivals = document.querySelector("#newArrivalsContent");
 let shoppingCart = [];
 
-data.forEach((item) => {
-  let article = document.createElement("article");
+let arrivals = (value = "None") => {
+  newArrivals.innerHTML = "";
+  data.forEach((item) => {
+    if (value == item.brand || value == "None") {
+      let article = document.createElement("article");
 
-  let img = document.createElement("img");
-  img.src = item.img;
-  article.appendChild(img);
+      let img = document.createElement("img");
+      img.src = item.img;
+      article.appendChild(img);
 
-  let div1 = document.createElement("div");
-  let h6 = document.createElement("h6");
-  h6.innerText = item.name;
-  div1.appendChild(h6);
-  let button = document.createElement("button");
-  button.innerText = "+";
-  button.addEventListener("click", () => {
-    document.querySelector("#shoppingCartCounter p").innerText = Number(document.querySelector("#shoppingCartCounter p").innerText) + 1;
-    shoppingCart.push(item);
-    console.log(shoppingCart);
-  });
-  div1.appendChild(button);
-
-  let div2 = document.createElement("div");
-  let price = document.createElement("p");
-  price.innerText = item.price;
-
-  let div3 = document.createElement("div");
-  let button1 = document.createElement("button");
-  button1.value = false;
-  button1.addEventListener("click", () => {
-    if (button1.value === "false") {
-      button1.value = "true";
-      item.sizes.forEach((item) => {
-        let p = document.createElement("p");
-        p.innerText = item;
-        div3.appendChild(p);
+      let div1 = document.createElement("div");
+      let h6 = document.createElement("h6");
+      h6.innerText = item.name;
+      div1.appendChild(h6);
+      let button = document.createElement("button");
+      button.innerText = "+";
+      button.addEventListener("click", () => {
+        document.querySelector("#shoppingCartCounter p").innerText = Number(document.querySelector("#shoppingCartCounter p").innerText) + 1;
+        shoppingCart.push(item);
+        console.log(shoppingCart);
       });
-    } else {
-      button1.value = "false";
-      div3.innerHTML = "";
+      div1.appendChild(button);
+
+      let div2 = document.createElement("div");
+      let price = document.createElement("p");
+      price.innerText = item.price;
+
+      let div3 = document.createElement("div");
+      let button1 = document.createElement("button");
+      button1.value = false;
+      button1.addEventListener("click", () => {
+        if (button1.value === "false") {
+          button1.value = "true";
+          item.sizes.forEach((item) => {
+            let p = document.createElement("p");
+            p.innerText = item;
+            div3.appendChild(p);
+          });
+        } else {
+          button1.value = "false";
+          div3.innerHTML = "";
+        }
+      });
+      let button1Img = document.createElement("img");
+      button1Img.src = "assets/img/arrow.svg";
+      button1.appendChild(button1Img);
+      div2.appendChild(price);
+      div2.appendChild(button1);
+
+      article.appendChild(div1);
+      article.appendChild(div2);
+      article.appendChild(div3);
+      newArrivals.appendChild(article);
     }
   });
-  let button1Img = document.createElement("img");
-  button1Img.src = "assets/img/arrow.svg";
-  button1.appendChild(button1Img);
-  div2.appendChild(price);
-  div2.appendChild(button1);
+};
 
-  article.appendChild(div1);
-  article.appendChild(div2);
-  article.appendChild(div3);
-  newArrivals.appendChild(article);
+arrivals();
+
+document.querySelector("#select").addEventListener("change", (event) => {
+  arrivals(event.target.value);
+  console.log(event.target.value);
 });
 
 // JOIN NEWSLETTER ---------------------------------
@@ -185,23 +197,41 @@ document.querySelectorAll("#cookieOverlay button").forEach((item) => {
 // SHOPPING CART ---------------------------------
 let shoppingCartOverlay = document.querySelector("#shoppingCartOverlay");
 let shoppingCartOverlayContent = document.querySelector("#shoppingCartOverlayContent");
+let totalCost = shoppingCartOverlay.querySelector("#totalCost span");
+totalCost.innerHTML = 0;
 
 shoppingCartOverlay.style.display = "none";
 document.querySelector("#shoppingCart").addEventListener("click", () => {
   if (shoppingCartOverlay.style.display == "none") {
     shoppingCartOverlay.style.display = "block";
+    shoppingCartOverlayContent.innerText = "";
     if (shoppingCart.length > 1) {
-      shoppingCart.forEach((item) => {
+      shoppingCart.forEach((item, index) => {
         let div = document.createElement("div");
-        div.innerText = item.name;
+        let p = document.createElement("p");
+        p.innerText = `${index + 1}. ${item.name} ${item.price}`;
+        div.appendChild(p);
         shoppingCartOverlayContent.appendChild(div);
+        totalCost.innerHTML = Number(totalCost.innerText) + Number(item.price.replace(".00 $", ""));
       });
     } else if (shoppingCart.length == 1) {
       let div = document.createElement("div");
-      div.innerText = shoppingCart[0].name;
+      let p = document.createElement("p");
+      p.innerText = shoppingCart[0].name;
+      div.appendChild(p);
+      shoppingCartOverlayContent.appendChild(div);
+    } else {
+      let div = document.createElement("div");
+      let p = document.createElement("p");
+      p.innerText = "The cart is empty";
+      div.appendChild(p);
       shoppingCartOverlayContent.appendChild(div);
     }
   } else {
     shoppingCartOverlay.style.display = "none";
   }
+});
+
+shoppingCartOverlay.querySelector("button").addEventListener("click", () => {
+  shoppingCartOverlay.style.display = "none";
 });

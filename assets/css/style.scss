@@ -183,6 +183,15 @@ header {
 // MAIN ---------------------------------------
 
 main {
+  & #newArrivals {
+    & div:nth-of-type(1) {
+      display: flex;
+      align-items: baseline;
+      & form {
+        margin-left: 40px;
+      }
+    }
+  }
   & #newArrivalsContent {
     display: flex;
     flex-wrap: wrap;
@@ -396,13 +405,31 @@ footer {
   height: 50%;
   background-color: $yellow;
   text-align: center;
+  & button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: $yellow;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+  }
   & #shoppingCartOverlayContent {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    color: red;
-    padding: 100px;
+    flex-direction: column;
+    color: $grey;
+    font-size: 24px;
+    height: 70%;
+    & div {
+      display: block;
+      min-width: 350px;
+      & p {
+        text-align: left;
+      }
+    }
   }
 }
 
