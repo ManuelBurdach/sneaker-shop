@@ -88,7 +88,7 @@ const data = [
 // LOGO ANI ---------------------------------
 document.querySelector("#logo").addEventListener("mouseover", (event) => {
   event.target.classList.add("logoAni");
-  timeout = setTimeout(() => {
+  setTimeout(() => {
     event.target.classList.remove("logoAni");
   }, 1000);
 });
@@ -136,15 +136,21 @@ let arrivals = (value = "None", value1 = "None") => {
       let div3 = document.createElement("div");
       let button1 = document.createElement("button");
       button1.value = false;
-      button1.addEventListener("click", () => {
+      button1.addEventListener("click", (event) => {
         if (button1.value === "false") {
+          console.log("dfs");
+          event.target.style.transform = "rotate(180deg)";
           button1.value = "true";
+          let p = document.createElement("p");
+          p.innerText = item.brand;
+          div3.appendChild(p);
           item.sizes.forEach((item) => {
             let p = document.createElement("p");
             p.innerText = item;
             div3.appendChild(p);
           });
         } else {
+          event.target.style.transform = "rotate(0deg)";
           button1.value = "false";
           div3.innerHTML = "";
         }
