@@ -97,8 +97,12 @@ document.querySelector("#logo").addEventListener("mouseover", (event) => {
 let newArrivals = document.querySelector("#newArrivalsContent");
 let shoppingCart = [];
 
-let arrivals = (value = "None") => {
-  // newArrivals.style.animation = "opacity 1s 1";
+let arrivals = (value = "None", value1 = "None") => {
+  if (value1 == "steigend") {
+    data.sort((a, b) => Number(a.price.replace(".00 $", "")) - Number(b.price.replace(".00 $", "")));
+  } else if (value1 == "sinkend") {
+    data.sort((a, b) => Number(b.price.replace(".00 $", "")) - Number(a.price.replace(".00 $", "")));
+  }
   newArrivals.classList.add("opacity");
   setTimeout(() => {
     newArrivals.classList.remove("opacity");
@@ -162,8 +166,11 @@ let arrivals = (value = "None") => {
 arrivals();
 
 document.querySelector("#select").addEventListener("change", (event) => {
-  arrivals(event.target.value);
-  console.log(event.target.value);
+  arrivals(event.target.value, document.querySelector("#select1").value);
+});
+
+document.querySelector("#select1").addEventListener("change", (event) => {
+  arrivals(document.querySelector("#select").value, event.target.value);
 });
 
 // JOIN NEWSLETTER ---------------------------------
